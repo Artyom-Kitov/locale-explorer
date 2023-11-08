@@ -21,7 +21,7 @@ class SearchField extends React.Component {
     const url = `https://graphhopper.com/api/1/geocode?q=${location}&key=${GRAPHHOPPER_API_KEY}`;
     axios.get(url)
       .then(response => {
-        this.props.handleLocations(response.data.hits.map((e) => {
+        this.props.handleLocations(response.data.hits.map(e => {
           return {
             name: e.name,
             lat: e.point.lat,

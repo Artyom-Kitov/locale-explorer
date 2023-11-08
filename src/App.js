@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import SearchField from "./SearchField";
 import React from "react";
@@ -25,9 +24,7 @@ class App extends React.Component {
           LOCALE EXPLORER
         </h1>
         <SearchField
-          handleLocations={(locations) => {
-            this.handleLocations(locations);
-          }}
+          handleLocations={locations => this.handleLocations(locations)}
         />
         <LocationList
           locations={this.state.locations}
