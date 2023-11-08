@@ -6,7 +6,7 @@ class Location extends React.Component {
   render() {
     const props = this.props;
     return (
-      <Card sx={{minWidth: 450}} style={{width: 200, height: 200, marginTop: "5px"}}>
+      <Card style={{width: 450, height: 230, marginTop: "5px"}}>
         <CardContent>
           <Typography sx={{fontSize: 14}} color="text.secondary">
             Location
@@ -22,7 +22,10 @@ class Location extends React.Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={() => this.props.onClick(this.props.lat, this.props.lon)}>
+          <Button
+            color="secondary"
+            onClick={() => this.props.onClick(this.props.lat, this.props.lon)}
+          >
             Explore
           </Button>
         </CardActions>

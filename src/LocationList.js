@@ -37,6 +37,7 @@ class LocationList extends React.Component {
           : response.data.info.descr;
         const newPlaces = [...this.state.places];
         newPlaces[index]["desc"] = info;
+        newPlaces[index]["image"] = response.data.preview;
         this.setState({
           places: newPlaces
         });
@@ -118,22 +119,20 @@ class LocationList extends React.Component {
     return (
       <div>
         <ul style={{display: "grid", justifyContent: "center"}}>
-          {this.props.locations.map(
-            e => {
-              return (<Location
-                key={"" + e.lat + e.lon}
+          {this.props.locations.map(loc =>
+              <Location
+                key={"" + loc.lat + loc.lon}
                 onClick={(lat, lon) => this.getLocationInfo(lat, lon)}
-                name={e.name}
-                lat={e.lat}
-                lon={e.lon}
-                country={e.country}
-                countrycode={e.countrycode}
-                city={e.city}
-                state={e.state}
-                street={e.street}
-                postcode={e.postcode}
-              />)
-            }
+                name={loc.name}
+                lat={loc.lat}
+                lon={loc.lon}
+                country={loc.country}
+                countrycode={loc.countrycode}
+                city={loc.city}
+                state={loc.state}
+                street={loc.street}
+                postcode={loc.postcode}
+              />
           )}
         </ul>
         <InfoWindow
@@ -141,8 +140,7 @@ class LocationList extends React.Component {
           onClose={() => this.clearLocationInfo()}
           weather={this.state.weather}
           places={this.state.places}
-        >
-        </InfoWindow>
+        />
       </div>
     );
   }
