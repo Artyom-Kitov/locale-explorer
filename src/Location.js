@@ -18,7 +18,7 @@ class Location extends React.Component {
             {this.props.lat} {this.props.lon}
           </Typography>
           <Typography>
-            {props.country ?? ""} ({props.countrycode ?? ""}) {props.city ?? ""} {props.state ?? ""} {props.street ?? ""} {props.postcode ?? ""}
+            {props.country} ({props.countrycode}) {props.city} {props.state} {props.street} {props.postcode}
           </Typography>
         </CardContent>
         <CardActions>

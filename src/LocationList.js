@@ -42,6 +42,8 @@ class LocationList extends React.Component {
         });
       })
       .catch(err => {
+        const newPlaces = [...this.state.places];
+        newPlaces[index]["desc"] = undefined;
         console.log(err);
       });
   }
@@ -75,6 +77,9 @@ class LocationList extends React.Component {
         this.getPlacesDescriptions(places);
       })
       .catch(err => {
+        this.setState({
+          places: undefined
+        });
         console.log(err);
       });
   }
@@ -90,6 +95,9 @@ class LocationList extends React.Component {
         this.setWeatherInfo(response.data);
       })
       .catch(err => {
+        this.setState({
+          weather: undefined
+        });
         console.error(err);
       });
     this.setState({

@@ -17,19 +17,22 @@ class InfoWindow extends React.Component {
             <li>{this.props.weather.main.charAt(0).toUpperCase() + this.props.weather.main.slice(1)}</li>
             <li>Temperature: {this.props.weather.temp.toFixed(2)}°C</li>
             <li>Feels like: {this.props.weather.feelsLike.toFixed(2)}°C</li>
-          </ul> : <p>loading...</p>}
+          </ul> : <p>{this.props.weather === null ? "loading..." : "no data"}</p>}
           <br/>
-          Interesting places: {this.props.places ?
+          Interesting places: {this.props.places ? (
+            this.props.places.length === 0 ? <p>No interesting places found</p> :
           <ul>
             {this.props.places.map(place => {
               return (
               <li key={place.id}>
                 {place.name}, {place.dist.toFixed(1)}m
-                <p>{place.desc ?? "loading info..."}</p>
+                <p>{
+                  place.desc == null ? "loading info..." : (place.desc ?? "no data")
+                }</p>
               </li>
             );
             })}
-          </ul> : <p>loading...</p>}
+          </ul>) : <p>{this.props.places === null ? "loading..." : "no data"}</p>}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => this.props.onClose()} color="primary">

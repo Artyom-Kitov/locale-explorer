@@ -16,7 +16,7 @@ class SearchField extends React.Component {
     this.props.handleLocations([]);
   }
 
-  sendRequest() {
+  sendSearchRequest() {
     const location = this.location.current.value;
     const url = `https://graphhopper.com/api/1/geocode?q=${location}&key=${GRAPHHOPPER_API_KEY}`;
     axios.get(url)
@@ -68,7 +68,7 @@ class SearchField extends React.Component {
           size="large"
           color="secondary"
           startIcon={<ExploreIcon/>}
-          onClick={() => this.sendRequest()}
+          onClick={() => this.sendSearchRequest()}
         >
           Search
         </Button>
